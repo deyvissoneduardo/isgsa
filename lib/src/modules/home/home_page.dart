@@ -5,6 +5,7 @@ import '../../core/notifier/default_listener_notifier.dart';
 import '../../core/theme/app_colors.dart';
 import '../../core/theme/theme_extension.dart';
 import '../../models/task_filter_enum.dart';
+import '../task/task_module.dart';
 import 'home_controller.dart';
 import 'widgets/float_action_button_widget.dart';
 import 'widgets/home_filters.dart';
@@ -40,25 +41,25 @@ class _HomePageState extends State<HomePage> {
   }
 
   Future<void> _gotoCreateTask(BuildContext context) async {
-    // await Navigator.of(context).push(
-    //   PageRouteBuilder(
-    //     transitionDuration: const Duration(milliseconds: 400),
-    //     transitionsBuilder: (context, animation, secondaryAnimation, child) {
-    //       animation = CurvedAnimation(
-    //         parent: animation,
-    //         curve: Curves.easeInQuad,
-    //       );
-    //       return ScaleTransition(
-    //         scale: animation,
-    //         alignment: Alignment.bottomRight,
-    //         child: child,
-    //       );
-    //     },
-    //     pageBuilder: (context, animation, secondaryAnimation) {
-    //       return TaskModule().getPage('/task/create', context);
-    //     },
-    //   ),
-    // );
+    await Navigator.of(context).push(
+      PageRouteBuilder(
+        transitionDuration: const Duration(milliseconds: 400),
+        transitionsBuilder: (context, animation, secondaryAnimation, child) {
+          animation = CurvedAnimation(
+            parent: animation,
+            curve: Curves.easeInQuad,
+          );
+          return ScaleTransition(
+            scale: animation,
+            alignment: Alignment.bottomRight,
+            child: child,
+          );
+        },
+        pageBuilder: (context, animation, secondaryAnimation) {
+          return TaskModule().getPage('/task/create', context);
+        },
+      ),
+    );
     widget._homeController.refreshPage();
   }
 

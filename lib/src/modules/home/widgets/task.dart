@@ -30,18 +30,18 @@ class Task extends StatelessWidget {
             side: const BorderSide(width: 1),
           ),
           leading: Checkbox(
-            value: _model.finished,
+            value: _model.checked,
             onChanged: (value) {},
           ),
           title: Text(
             _model.description,
-            style: _model.finished
+            style: _model.checked
                 ? const TextStyle(decoration: TextDecoration.lineThrough)
                 : null,
           ),
           subtitle: Text(
-            dateFormat.format(_model.dateTime),
-            style: _model.finished
+            dateFormat.format(_model.date),
+            style: _model.checked
                 ? const TextStyle(decoration: TextDecoration.lineThrough)
                 : null,
           ),

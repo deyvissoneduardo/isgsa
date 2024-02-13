@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:synchronized/synchronized.dart';
@@ -5,7 +7,7 @@ import 'package:synchronized/synchronized.dart';
 import 'sqlite_migration_factory.dart';
 
 class SqliteConnectionFactory {
-  static const _VERSION = 1;
+  static const _VERSION = 2;
   static const _DATABASE_NAME = 'TODO_LIST_PROVIDER';
   Database? _db;
   final _lock = Lock();
@@ -21,6 +23,11 @@ class SqliteConnectionFactory {
   Future<Database> openConnection() async {
     final databasePath = await getDatabasesPath();
     final databasePathFinal = join(databasePath, _DATABASE_NAME);
+
+    if (!await databaseExists(databasePathFinal)) {
+      await _createNewDatabase(databasePathFinal);
+    }
+
     if (_db == null) {
       await _lock.synchronized(
         () async => {
@@ -41,6 +48,17 @@ class SqliteConnectionFactory {
     return _db!;
   }
 
+  Future<void> _createNewDatabase(String path) async {
+    final newDb = await openDatabase(
+      path,
+      version: _VERSION,
+      onCreate: _onCreate,
+      onUpgrade: _onUpgrade,
+      onDowngrade: _onDowngrade,
+    );
+    await newDb.close();
+  }
+
   void closeConnection() {
     _db?.close();
     _db = null;
@@ -54,6 +72,8 @@ class SqliteConnectionFactory {
     final batch = db.batch();
     final migrations = SqliteMigrationFactory().getCreateMigration();
     for (var migration in migrations) {
+      log('*****************');
+      log('$migration');
       migration.create(batch);
     }
     batch.commit();

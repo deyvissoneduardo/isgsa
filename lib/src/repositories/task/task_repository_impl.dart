@@ -24,7 +24,7 @@ class TaskRepositoryImpl implements TaskRepository {
         'title': title,
         'description': description,
         'date': dateTime.toIso8601String(),
-        'finalizado': 0,
+        'checked': 0,
       },
     );
   }

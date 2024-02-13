@@ -35,17 +35,17 @@ class HomeController extends DefaultChangeNotifier {
 
     todayTotalTasks = TotalTasksModel(
       totalTask: todayTasks.length,
-      totalTaskFinish: todayTasks.where((task) => task.finished).length,
+      totalTaskFinish: todayTasks.where((task) => task.checked).length,
     );
 
     tomorrowTotalTasks = TotalTasksModel(
       totalTask: tomorrowTasks.length,
-      totalTaskFinish: tomorrowTasks.where((task) => task.finished).length,
+      totalTaskFinish: tomorrowTasks.where((task) => task.checked).length,
     );
 
     weekTotalTasks = TotalTasksModel(
       totalTask: weekTasks.tasks.length,
-      totalTaskFinish: weekTasks.tasks.where((task) => task.finished).length,
+      totalTaskFinish: weekTasks.tasks.where((task) => task.checked).length,
     );
 
     notifyListeners();
@@ -89,7 +89,7 @@ class HomeController extends DefaultChangeNotifier {
   void filterByDay(DateTime date) {
     selectedDay = date;
     filteredTasks = allTasks.where((task) {
-      return task.dateTime == date;
+      return task.date == date;
     }).toList();
     notifyListeners();
   }
