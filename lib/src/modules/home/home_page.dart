@@ -67,10 +67,10 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     final sizeOf = MediaQuery.sizeOf(context);
     return Scaffold(
-      backgroundColor: AppColors.background,
+      backgroundColor: AppColor.background,
       appBar: AppBar(
         iconTheme: IconThemeData(color: context.primaryColor),
-        backgroundColor: AppColors.background,
+        backgroundColor: AppColor.background,
         title: Row(
           children: [
             Image.asset(

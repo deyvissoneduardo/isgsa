@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
+import '../../../core/theme/app_colors.dart';
 import '../../../models/task_model.dart';
 
 class Task extends StatelessWidget {
@@ -16,10 +17,11 @@ class Task extends StatelessWidget {
     return Container(
       margin: const EdgeInsets.symmetric(vertical: 5),
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: AppColor.white,
         borderRadius: BorderRadius.circular(20),
+        border: Border.all(color: AppColor.primaryColorLight, width: 2),
         boxShadow: const [
-          BoxShadow(color: Colors.grey),
+          BoxShadow(color: AppColor.info),
         ],
       ),
       child: IntrinsicHeight(
@@ -34,7 +36,7 @@ class Task extends StatelessWidget {
             onChanged: (value) {},
           ),
           title: Text(
-            _model.description,
+            _model.title,
             style: _model.checked
                 ? const TextStyle(decoration: TextDecoration.lineThrough)
                 : null,

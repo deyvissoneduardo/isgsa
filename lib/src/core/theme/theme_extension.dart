@@ -11,6 +11,6 @@ extension ThemeExtensions on BuildContext {
   TextStyle get titleStyle => const TextStyle(
         fontSize: 12,
         fontWeight: FontWeight.bold,
-        color: AppColors.info,
+        color: AppColor.info,
       );
 }

@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:validatorless/validatorless.dart';
 
+import '../../core/helpers/messages.dart';
 import '../../core/notifier/default_listener_notifier.dart';
+import '../../core/theme/app_colors.dart';
 import '../../core/theme/theme_extension.dart';
 import '../../core/widgets/todo_list_field.dart';
 import 'task_create_controller.dart';
@@ -66,7 +68,10 @@ class _TaskCreatePageState extends State<TaskCreatePage> {
         backgroundColor: context.primaryColor,
         label: const Text(
           'Salvar Task',
-          style: TextStyle(fontWeight: FontWeight.bold),
+          style: TextStyle(
+            fontWeight: FontWeight.bold,
+            color: AppColor.white,
+          ),
         ),
         onPressed: () {
           final formValid = _formKey.currentState?.validate() ?? false;
@@ -76,6 +81,7 @@ class _TaskCreatePageState extends State<TaskCreatePage> {
               title: _titleEC.text.trim(),
             );
           }
+          Messages.showSuccess('Salvo com Sucesso', context);
         },
       ),
       body: Form(

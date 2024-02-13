@@ -4,11 +4,11 @@ import 'app_colors.dart';
 class TodoListUiConfig {
   TodoListUiConfig._();
   static ThemeData get theme => ThemeData(
-        primaryColor: AppColors.primaryColor,
-        primaryColorLight: AppColors.primaryColorLight,
+        primaryColor: AppColor.primaryColor,
+        primaryColorLight: AppColor.primaryColorLight,
         elevatedButtonTheme: ElevatedButtonThemeData(
           style: ElevatedButton.styleFrom(
-            backgroundColor: AppColors.primaryColor,
+            backgroundColor: AppColor.primaryColor,
           ),
         ),
       );

@@ -21,7 +21,7 @@ class FloatActionButtonWidget extends StatelessWidget {
       ),
       child: const Icon(
         Icons.add,
-        color: AppColors.white,
+        color: AppColor.white,
       ),
     );
   }
