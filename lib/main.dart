@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-
 import 'src/app_module.dart';
 
-Future<void> main() async {
+void main() {
   WidgetsFlutterBinding.ensureInitialized();
   runApp(const AppModule());
 }
