@@ -1,29 +1,29 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:provider/provider.dart';
 
 import '../../../core/theme/app_colors.dart';
+import '../../../core/theme/theme_extension.dart';
 import '../../../models/task_model.dart';
+import '../home_controller.dart';
 
 class Task extends StatelessWidget {
-  final TaskModel _model;
+  final TaskModel model;
   final dateFormat = DateFormat('dd/MM/y');
 
-  Task({Key? key, required TaskModel model})
-      : _model = model,
-        super(key: key);
+  Task({Key? key, required this.model}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      margin: const EdgeInsets.symmetric(vertical: 5),
-      decoration: BoxDecoration(
-        color: AppColor.white,
+    return Card(
+      shadowColor: AppColor.white,
+      shape: RoundedRectangleBorder(
+        side: BorderSide(
+          color: context.primaryColorLight,
+        ),
         borderRadius: BorderRadius.circular(20),
-        border: Border.all(color: AppColor.primaryColorLight, width: 2),
-        boxShadow: const [
-          BoxShadow(color: AppColor.info),
-        ],
       ),
+      elevation: 0,
       child: IntrinsicHeight(
         child: ListTile(
           contentPadding: const EdgeInsets.all(8),
@@ -32,20 +32,29 @@ class Task extends StatelessWidget {
             side: const BorderSide(width: 1),
           ),
           leading: Checkbox(
-            value: _model.checked,
-            onChanged: (value) {},
+            value: model.checked,
+            onChanged: (value) =>
+                context.read<HomeController>().checkOrUncheckTask(model),
           ),
           title: Text(
-            _model.title,
-            style: _model.checked
-                ? const TextStyle(decoration: TextDecoration.lineThrough)
-                : null,
+            model.title,
+            style: TextStyle(
+              decoration: model.checked ? TextDecoration.lineThrough : null,
+            ),
           ),
           subtitle: Text(
-            dateFormat.format(_model.date),
-            style: _model.checked
-                ? const TextStyle(decoration: TextDecoration.lineThrough)
-                : null,
+            dateFormat.format(model.date),
+            style: TextStyle(
+              decoration: model.checked ? TextDecoration.lineThrough : null,
+            ),
+          ),
+          trailing: IconButton(
+            onPressed: () =>
+                context.read<HomeController>().deleteTasks(model.id),
+            icon: const Icon(
+              Icons.delete,
+              color: AppColor.red,
+            ),
           ),
         ),
       ),

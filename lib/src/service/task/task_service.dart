@@ -9,8 +9,11 @@ abstract class TaskService {
   });
 
   Future<List<TaskModel>> getToday();
-
   Future<List<TaskModel>> getTomorrow();
-
   Future<WeekTaskModel> getWeek();
+
+  Future<void> deleteById(int id);
+  Future<void> deleteAllTasks();
+
+  Future<void> checkOrUncheckTask(TaskModel task);
 }

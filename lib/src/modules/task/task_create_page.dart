@@ -77,7 +77,7 @@ class _TaskCreatePageState extends State<TaskCreatePage> {
           final formValid = _formKey.currentState?.validate() ?? false;
           if (formValid) {
             widget._controller.save(
-              description: _descriptionEC.text.trim(),
+              description: '',
               title: _titleEC.text.trim(),
             );
           }
@@ -100,17 +100,11 @@ class _TaskCreatePageState extends State<TaskCreatePage> {
                 ),
               ),
               TodoListField(
-                label: 'título',
+                label: 'Descrição',
                 controller: _titleEC,
                 validator: Validatorless.required('Campo obrigatório'),
               ),
               const SizedBox(height: 30),
-              TodoListField(
-                label: 'descrição',
-                controller: _descriptionEC,
-                validator: Validatorless.required('Campo obrigatório'),
-              ),
-              const SizedBox(height: 20),
               CalendarButton(),
             ],
           ),

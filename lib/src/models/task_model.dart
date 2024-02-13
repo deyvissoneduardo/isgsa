@@ -22,4 +22,20 @@ class TaskModel {
       checked: task['checked'] == 1,
     );
   }
+
+  TaskModel copyWith({
+    int? id,
+    String? description,
+    String? title,
+    DateTime? date,
+    bool? checked,
+  }) {
+    return TaskModel(
+      id: id ?? this.id,
+      description: description ?? this.description,
+      title: title ?? this.title,
+      date: date ?? this.date,
+      checked: checked ?? this.checked,
+    );
+  }
 }

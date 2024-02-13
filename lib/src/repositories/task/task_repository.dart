@@ -8,4 +8,8 @@ abstract interface class TaskRepository {
   });
 
   Future<List<TaskModel>> findByPeriod(DateTime start, DateTime end);
+
+  Future<void> deleteById(int id);
+  Future<void> deleteAllTasks();
+  Future<void> checkOrUncheckTask(TaskModel task);
 }
