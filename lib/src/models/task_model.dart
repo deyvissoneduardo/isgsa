@@ -3,7 +3,7 @@ class TaskModel {
   final String description;
   final String title;
   final DateTime date;
-  final bool checked;
+  bool checked;
 
   TaskModel({
     required this.id,

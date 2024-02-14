@@ -21,9 +21,22 @@ class HomeTasks extends StatelessWidget {
             selector: (context, controller) =>
                 controller.filterSelected.description,
             builder: (context, description, child) {
-              return Text(
-                'TASK\'S $description',
-                style: context.titleStyle,
+              return Row(
+                children: [
+                  Text(
+                    'TASK\'S $description',
+                    style: context.titleStyle,
+                  ),
+                  const Spacer(),
+                  Checkbox.adaptive(
+                    value: context.read<HomeController>().checked,
+                    onChanged: (value) {
+                      context
+                          .read<HomeController>()
+                          .checkOrUncheckAllTasks(value!);
+                    },
+                  ),
+                ],
               );
             },
           ),

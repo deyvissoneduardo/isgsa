@@ -84,19 +84,6 @@ class _HomePageState extends State<HomePage> {
           ],
         ),
         elevation: 0,
-        // actions: [
-        //   PopupMenuButton(
-        //     icon: const Icon(Icons.menu),
-        //     itemBuilder: (_) => [
-        //       PopupMenuItem<bool>(
-        //         value: true,
-        //         child: Text(
-        //           '${widget._homeController.showFinishingTasks ? 'Esconder' : 'Mostrar'} tarefas concluidas',
-        //         ),
-        //       ),
-        //     ],
-        //   ),
-        // ],
       ),
       floatingActionButton: FloatActionButtonWidget(
         onPressed: () => _gotoCreateTask(context),

@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import '../../core/notifier/default_change_notifier.dart';
 import '../../models/task_filter_enum.dart';
 import '../../models/task_model.dart';
@@ -18,6 +20,7 @@ class HomeController extends DefaultChangeNotifier {
   DateTime? initialDateOfWeek;
   DateTime? selectedDay;
   bool showFinishingTasks = false;
+  bool checked = false;
 
   HomeController({
     required TaskService taskService,
@@ -135,5 +138,20 @@ class HomeController extends DefaultChangeNotifier {
       return task.checked;
     }).toList();
     notifyListeners();
+  }
+
+  void checkOrUncheckAllTasks(bool value) {
+    showLoadingAndResetState();
+    notifyListeners();
+
+    for (TaskModel task in allTasks) {
+      task.checked = value;
+    }
+    checked = !checked;
+    log('$checked');
+
+    notifyListeners();
+    hideLoading();
+    refreshPage();
   }
 }
