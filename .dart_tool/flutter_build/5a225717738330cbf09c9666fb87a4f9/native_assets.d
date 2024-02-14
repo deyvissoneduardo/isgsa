@@ -1,0 +1,1 @@
+ /home/deyvisson/Documents/projects/todolist/.dart_tool/flutter_build/5a225717738330cbf09c9666fb87a4f9/native_assets.yaml: 
