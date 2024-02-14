@@ -10,7 +10,7 @@
 
 2. **Gerenciamento de Estado:**
    - Compare os métodos `setState`, `Provider`, e `BLoC` para gerenciamento de estado no Flutter. Quais são as vantagens e desvantagens de cada um?<br>
-    [clique aqui](./manage_state.md.md)
+    [clique aqui](./manage_state.md)
 
 ### Parte 2: Programação e Resolução de Problemas
 **Instruções:** Desenvolva um aplicativo Flutter com as seguintes especificações.
