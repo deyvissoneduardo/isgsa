@@ -5,8 +5,8 @@
 
 1. **Flutter e Dart:**
    - Explique a diferença entre `StatelessWidget` e `StatefulWidget`.
-   - Descreva o ciclo de vida de um `StatefulWidget`.
-
+   - Descreva o ciclo de vida de um `StatefulWidget`.<br>
+      [clique aqui](./life_cycle.md)
 2. **Gerenciamento de Estado:**
    - Compare os métodos `setState`, `Provider`, e `BLoC` para gerenciamento de estado no Flutter. Quais são as vantagens e desvantagens de cada um?
 
